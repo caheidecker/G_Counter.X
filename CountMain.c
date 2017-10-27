@@ -29,13 +29,21 @@
 #include <string.h>
 #include "LCD.h"
 
+//@TODO Make Interrupt Function
+
 int main(int argc, char** argv) 
 {
     Lcd_Init();
     Lcd_Clear();
+    //@TODO Set up configs
+    //@TODO add counters set to 0
     while(1)
     {
-        
+        //@TODO Add handler for button push
+        //@TODO On push increment count
+        //@TODO send count to array
+        //@TODO send array to lcd
+        //@TODO just chill till interrupt is triggered again
     }
     return (EXIT_SUCCESS);
 }
