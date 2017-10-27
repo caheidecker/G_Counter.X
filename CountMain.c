@@ -3,6 +3,7 @@
  * Author: caheidecker
  *
  * Created on October 26, 2017, 6:25 PM
+ http://microchipdeveloper.com/8bit:timer0count
  */
 
 #define _XTAL_FREQ 8000000
