@@ -29,14 +29,35 @@
 #include <string.h>
 #include "LCD.h"
 
+//@TODO add counters set to 0
 //@TODO Make Interrupt Function
+void interrupt Timer0_ISR(void)
+{
+    if (T0IE && T0IF)
+    {
+        T0IF = 0;
+        ++counter;
+    }
+}
 
+//are TMR0 interrupts enabled and
+//is the TMR0 interrupt flag set?
+//TMR0 interrupt flag must be
+//cleared in software
+//to allow subsequent interrupts
+//increment the counter variable
+//by 1
 int main(int argc, char** argv) 
 {
     Lcd_Init();
     Lcd_Clear();
     //@TODO Set up configs
-    //@TODO add counters set to 0
+    //ANSEL = 0xFB;//Configure T0CKI/AN2 as a digital I/O
+    TMR0 = 0;
+    //OPTION = 0x28; external clock source
+    T0IE = 1;
+    GIE = 1;
+    
     while(1)
     {
         //@TODO Add handler for button push
