@@ -4,6 +4,9 @@
  *
  * Created on October 26, 2017, 6:25 PM
  http://microchipdeveloper.com/8bit:timer0count
+ https://electrosome.com/switch-debouncing/
+ https://electrosome.com/wp-content/uploads/2012/12/Hardware-Switch-Debouncing.jpg
+ http://www.eng.utah.edu/~cs5780/debouncing.pdf
  */
 
 #define _XTAL_FREQ 8000000
