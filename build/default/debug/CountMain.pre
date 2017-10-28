@@ -8399,7 +8399,8 @@ Lcd_Write_Char(a[i]);
 }
 
 # 40 "CountMain.c"
-int counter = 0;
+unsigned int counter = 0;
+unsigned int x;
 
 char array[100];
 
@@ -8439,11 +8440,12 @@ while(1)
 Lcd_Set_Cursor(1,1);
 
 
-itoa(counter,array,10);
+counter = x;
+itoa(x,array,10);
 
 Lcd_Write_String(array);
 
-# 91
+# 93
 }
 return (0);
 }

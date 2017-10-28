@@ -32,10 +32,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "LCD.h"
-#include <pic18f26k22.h>
+#include <p18f26k22.h>
+//#include <pic.h>
+
 
 //@TODO add counters set to 0
-int counter = 0;
+unsigned int counter = 0;
+unsigned int x;
 //array to store int to then write to lcd
 char array[100];
 
@@ -63,19 +66,19 @@ int main(int argc, char** argv)
     TRISA = 1;
     TRISB= 0;
     TRISC= 0;
-    
-    TMR0 = 0;
     //@TODO Fix interrupt configs
+    TMR0 = 0;
+    T0IE = 1;
+    GIE = 1; 
     //OPTION = 0x28; external clock source
-    //T0IE = 1;
-    //GIE = 1;
     
     while(1)
     {
         Lcd_Set_Cursor(1,1);
         //@TODO send count to array
         //I Think this is right double check; Assign it to a new variable 
-        itoa(counter,array,10);
+        counter = x;
+        itoa(x,array,10);
         //@TODO send array to lcd
         Lcd_Write_String(array);
         //@TODO just chill till interrupt is triggered again
