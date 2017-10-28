@@ -32,43 +32,60 @@
 #include <stdio.h>
 #include <string.h>
 #include "LCD.h"
+#include <pic18f26k22.h>
 
 //@TODO add counters set to 0
+int counter = 0;
+//array to store int to then write to lcd
+char array[100];
+
 //@TODO Make Interrupt Function
 void interrupt Timer0_ISR(void)
 {
+    
     if (T0IE && T0IF)
     {
+        //Possibly needed to clear the lcd everytime it is pushed before rewriting
+        //Lcd_Clear();
         T0IF = 0;
-        ++counter;
+        counter++;
     }
 }
 
-//are TMR0 interrupts enabled and
-//is the TMR0 interrupt flag set?
-//TMR0 interrupt flag must be
-//cleared in software
-//to allow subsequent interrupts
-//increment the counter variable
-//by 1
 int main(int argc, char** argv) 
 {
     Lcd_Init();
     Lcd_Clear();
     //@TODO Set up configs
-    //ANSEL = 0xFB;//Configure T0CKI/AN2 as a digital I/O
+    ANSELB=0;//PORTB digital
+    ANSELC=0;//PORTC digital
+    ANSELA = 0xFB;//Configure T0CKI/AN2 as a digital I/O
+    TRISA = 1;
+    TRISB= 0;
+    TRISC= 0;
+    
     TMR0 = 0;
+    //@TODO Fix interrupt configs
     //OPTION = 0x28; external clock source
-    T0IE = 1;
-    GIE = 1;
+    //T0IE = 1;
+    //GIE = 1;
     
     while(1)
     {
-        //@TODO Add handler for button push
-        //@TODO On push increment count
+        Lcd_Set_Cursor(1,1);
         //@TODO send count to array
+        //I Think this is right double check; Assign it to a new variable 
+        itoa(counter,array,10);
         //@TODO send array to lcd
+        Lcd_Write_String(array);
         //@TODO just chill till interrupt is triggered again
+        //__delay_ms(100);//Lcd Refresh
+        
+        /*
+         * Plan B
+         * Convert the into to ASCII by counter + 48 = newVal
+         * then just send newVal directly to lcd as it will read the correct value
+         */
     }
     return (EXIT_SUCCESS);
 }
