@@ -70,35 +70,113 @@ Version 3.2 HI-TECH Software Intermediate Code
 "164 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18.h
 [v __delay `JF6635 ~T0 @X0 0 e ]
 [p i __delay ]
-"18265 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f26k22.h
-[v _T0IE `Vb ~T0 @X0 0 e@32661 ]
-"18267
-[v _T0IF `Vb ~T0 @X0 0 e@32658 ]
+"16133 C:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f26k22.h
+[s S796 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S796 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"16143
+[s S797 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S797 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"16153
+[s S798 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S798 . . GIEL GIEH ]
+"16132
+[u S795 `S796 1 `S797 1 `S798 1 ]
+[n S795 . . . . ]
+"16159
+[v _INTCONbits `VS795 ~T0 @X0 0 e@4082 ]
 [p mainexit ]
+"15247
+[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
 "95
 [v _ANSELB `Vuc ~T0 @X0 0 e@3897 ]
 "145
 [v _ANSELC `Vuc ~T0 @X0 0 e@3898 ]
 "50
 [v _ANSELA `Vuc ~T0 @X0 0 e@3896 ]
-"7578
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "7800
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "8022
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"15400
-[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
-"17285
-[v _GIE `Vb ~T0 @X0 0 e@32663 ]
-"95 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdlib.h
-[v _itoa `(*uc ~T0 @X0 0 ef3`*uc`i`i ]
-"26 CountMain.c
+"7589
+[s S375 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S375 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"7599
+[s S376 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S376 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"7588
+[u S374 `S375 1 `S376 1 ]
+[n S374 . . . ]
+"7610
+[v _TRISAbits `VS374 ~T0 @X0 0 e@3986 ]
+"15330
+[v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
+"15407
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"15336
+[s S739 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S739 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"15344
+[s S740 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S740 . T0PS0 T0PS1 T0PS2 ]
+"15335
+[u S738 `S739 1 `S740 1 ]
+[n S738 . . . ]
+"15350
+[v _T0CONbits `VS738 ~T0 @X0 0 e@4053 ]
+"6178
+[s S323 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S323 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"6188
+[s S324 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S324 . AN0 AN1 AN2 AN3 . AN4 ]
+"6196
+[s S325 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S325 . C12IN0M C12IN1M C2INP C1INP C1OUT C2OUT ]
+"6204
+[s S326 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S326 . C12IN0N C12IN1N VREFM VREFP T0CKI SS ]
+"6212
+[s S327 :5 `uc 1 :1 `uc 1 ]
+[n S327 . . NOT_SS ]
+"6216
+[s S328 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S328 . . VREFN . SRQ nSS ]
+"6223
+[s S329 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S329 . . CVREF . CCP5 LVDIN ]
+"6230
+[s S330 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S330 . . DACOUT . HLVDIN ]
+"6236
+[s S331 :5 `uc 1 :1 `uc 1 ]
+[n S331 . . SS1 ]
+"6240
+[s S332 :5 `uc 1 :1 `uc 1 ]
+[n S332 . . NOT_SS1 ]
+"6244
+[s S333 :5 `uc 1 :1 `uc 1 ]
+[n S333 . . nSS1 ]
+"6248
+[s S334 :5 `uc 1 :1 `uc 1 ]
+[n S334 . . SRNQ ]
+"6252
+[s S335 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
+[n S335 . ULPWUIN . RJPU ]
+"6177
+[u S322 `S323 1 `S324 1 `S325 1 `S326 1 `S327 1 `S328 1 `S329 1 `S330 1 `S331 1 `S332 1 `S333 1 `S334 1 `S335 1 ]
+[n S322 . . . . . . . . . . . . . . ]
+"6258
+[v _PORTAbits `VS322 ~T0 @X0 0 e@3968 ]
+"96 C:\Program Files (x86)\Microchip\xc8\v1.43\include\stdlib.h
+[v _utoa `(*uc ~T0 @X0 0 ef3`*uc`ui`i ]
+"28 CountMain.c
 [p x FOSC=INTIO67 ]
-"27
+"29
 [p x WDTEN=OFF ]
-"28
+"30
 [p x PWRTEN=ON ]
+"31
+[p x LVP=OFF ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6587,9 +6665,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 30: PORTCbits.RC1 = 1;
 "30
 [e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
-[; ;LCD.h: 31: _delay((unsigned long)((4)*(8000000/4000.0)));
+[; ;LCD.h: 31: _delay((unsigned long)((400)*(16000000/4000000.0)));
 "31
-[e ( __delay (1 -> * -> -> 4 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 [; ;LCD.h: 32: PORTCbits.RC1 = 0;
 "32
 [e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
@@ -6753,21 +6831,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 80: Lcd_Port(0x00);
 "80
 [e ( _Lcd_Port (1 -> -> 0 `i `uc ]
-[; ;LCD.h: 81: _delay((unsigned long)((20)*(8000000/4000.0)));
+[; ;LCD.h: 81: _delay((unsigned long)((20)*(16000000/4000000.0)));
 "81
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 [; ;LCD.h: 82: Lcd_Cmd(0x03);
 "82
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
-[; ;LCD.h: 83: _delay((unsigned long)((5)*(8000000/4000.0)));
+[; ;LCD.h: 83: _delay((unsigned long)((5)*(16000000/4000000.0)));
 "83
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 [; ;LCD.h: 84: Lcd_Cmd(0x03);
 "84
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
-[; ;LCD.h: 85: _delay((unsigned long)((11)*(8000000/4000.0)));
+[; ;LCD.h: 85: _delay((unsigned long)((11)*(16000000/4000000.0)));
 "85
-[e ( __delay (1 -> * -> -> 11 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 11 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 [; ;LCD.h: 86: Lcd_Cmd(0x03);
 "86
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
@@ -6826,9 +6904,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 104: PORTCbits.RC1 = 1;
 "104
 [e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
-[; ;LCD.h: 105: _delay((unsigned long)((40)*(8000000/4000000.0)));
+[; ;LCD.h: 105: _delay((unsigned long)((20)*(16000000/4000.0)));
 "105
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 [; ;LCD.h: 106: PORTCbits.RC1 = 0;
 "106
 [e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
@@ -6838,9 +6916,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 108: PORTCbits.RC1 = 1;
 "108
 [e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
-[; ;LCD.h: 109: _delay((unsigned long)((40)*(8000000/4000000.0)));
+[; ;LCD.h: 109: _delay((unsigned long)((20)*(16000000/4000.0)));
 "109
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 [; ;LCD.h: 110: PORTCbits.RC1 = 0;
 "110
 [e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
@@ -6882,118 +6960,156 @@ Version 3.2 HI-TECH Software Intermediate Code
 "118
 [e :UE 850 ]
 }
-"40 CountMain.c
-[v _counter `i ~T0 @X0 1 e ]
-[i _counter
--> 0 `i
-]
-[; ;CountMain.c: 40: int counter = 0;
-"42
-[v _array `uc ~T0 @X0 -> 100 `i e ]
-[; ;CountMain.c: 42: char array[100];
+"43 CountMain.c
+[v _counter `ui ~T0 @X0 1 e ]
+[v _x `ui ~T0 @X0 1 e ]
+[; ;CountMain.c: 43: unsigned int counter, x;
+"44
+[v _array `uc ~T0 @X0 -> 25 `i e ]
+[; ;CountMain.c: 44: char array[25];
 [v $root$_Timer0_ISR `(v ~T0 @X0 0 e ]
-[v F6936 `(v ~T0 @X0 1 tf ]
-"45
-[v _Timer0_ISR `IF6936 ~T0 @X0 1 e ]
-"46
+[v F6937 `(v ~T0 @X0 1 tf ]
+"47
+[v _Timer0_ISR `IF6937 ~T0 @X0 1 e ]
+"48
 {
-[; ;CountMain.c: 45: void interrupt Timer0_ISR(void)
-[; ;CountMain.c: 46: {
+[; ;CountMain.c: 47: void interrupt Timer0_ISR(void)
+[; ;CountMain.c: 48: {
 [e :U _Timer0_ISR ]
 [f ]
-[; ;CountMain.c: 48: if (T0IE && T0IF)
-"48
-[e $ ! && _T0IE _T0IF 856  ]
-[; ;CountMain.c: 49: {
+[; ;CountMain.c: 49: if (INTCONbits.TMR0IF == 1)
 "49
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 856  ]
+[; ;CountMain.c: 50: {
+"50
 {
-[; ;CountMain.c: 52: T0IF = 0;
 "52
-[e = _T0IF -> -> 0 `i `b ]
-[; ;CountMain.c: 53: counter++;
-"53
-[e ++ _counter -> 1 `i ]
-"54
 }
 [e :U 856 ]
+[; ;CountMain.c: 52: }
+[; ;CountMain.c: 53: INTCONbits.TMR0IF = 0;
+"53
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 [; ;CountMain.c: 54: }
-[; ;CountMain.c: 55: }
-"55
+"54
 [e :UE 855 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"57
+"56
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
-"58
-{
-[; ;CountMain.c: 57: int main(int argc, char** argv)
-[; ;CountMain.c: 58: {
-[e :U _main ]
 "57
+{
+[; ;CountMain.c: 56: int main(int argc, char** argv)
+[; ;CountMain.c: 57: {
+[e :U _main ]
+"56
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
-"58
+"57
 [f ]
-[; ;CountMain.c: 59: Lcd_Init();
-"59
-[e ( _Lcd_Init ..  ]
-[; ;CountMain.c: 60: Lcd_Clear();
+[; ;CountMain.c: 58: counter = 0;
+"58
+[e = _counter -> -> 0 `i `ui ]
+[; ;CountMain.c: 60: OSCCON = 0x72;
 "60
-[e ( _Lcd_Clear ..  ]
-[; ;CountMain.c: 62: ANSELB=0;
-"62
+[e = _OSCCON -> -> 114 `i `uc ]
+[; ;CountMain.c: 61: ANSELB = 0;
+"61
 [e = _ANSELB -> -> 0 `i `uc ]
-[; ;CountMain.c: 63: ANSELC=0;
-"63
+[; ;CountMain.c: 62: ANSELC = 0;
+"62
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;CountMain.c: 64: ANSELA = 0xFB;
+[; ;CountMain.c: 63: ANSELA = 0;
+"63
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;CountMain.c: 64: TRISB = 0xC0;
 "64
-[e = _ANSELA -> -> 251 `i `uc ]
-[; ;CountMain.c: 65: TRISA = 1;
+[e = _TRISB -> -> 192 `i `uc ]
+[; ;CountMain.c: 65: TRISC = 0;
 "65
-[e = _TRISA -> -> 1 `i `uc ]
-[; ;CountMain.c: 66: TRISB= 0;
-"66
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;CountMain.c: 67: TRISC= 0;
-"67
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;CountMain.c: 69: TMR0 = 0;
-"69
-[e = _TMR0 -> -> 0 `i `us ]
-[; ;CountMain.c: 72: T0IE = 1;
+[; ;CountMain.c: 66: TRISAbits.RA4 = 1;
+"66
+[e = . . _TRISAbits 1 4 -> -> 1 `i `uc ]
+[; ;CountMain.c: 67: T0CON = 0x68;
+"67
+[e = _T0CON -> -> 104 `i `uc ]
+[; ;CountMain.c: 68: TMR0L = 246;
+"68
+[e = _TMR0L -> -> 246 `i `uc ]
+[; ;CountMain.c: 70: INTCONbits.TMR0IE = 1;
+"70
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;CountMain.c: 71: INTCONbits.TMR0IF = 0;
+"71
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;CountMain.c: 72: INTCONbits.PEIE = 1;
 "72
-[e = _T0IE -> -> 1 `i `b ]
-[; ;CountMain.c: 73: GIE = 1;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;CountMain.c: 73: INTCONbits.GIE = 1;
 "73
-[e = _GIE -> -> 1 `i `b ]
-[; ;CountMain.c: 75: while(1)
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;CountMain.c: 75: T0CONbits.TMR0ON = 1;
 "75
-[e :U 859 ]
-[; ;CountMain.c: 76: {
-"76
-{
-[; ;CountMain.c: 77: Lcd_Set_Cursor(1,1);
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;CountMain.c: 77: Lcd_Init();
 "77
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;CountMain.c: 80: itoa(counter,array,10);
+[e ( _Lcd_Init ..  ]
+[; ;CountMain.c: 78: Lcd_Clear();
+"78
+[e ( _Lcd_Clear ..  ]
+[; ;CountMain.c: 79: Lcd_Write_String("0");
+"79
+[e ( _Lcd_Write_String (1 -> :s 1C `*uc ]
+[; ;CountMain.c: 80: LOOP:while(1)
 "80
-[e ( _itoa (3 , , -> _counter `*uc -> &U _array `i -> 10 `i ]
-[; ;CountMain.c: 82: Lcd_Write_String(array);
-"82
+[e :U 858 ]
+[e :U 860 ]
+[; ;CountMain.c: 81: {
+"81
+{
+[; ;CountMain.c: 83: if (!PORTAbits.RA4)
+"83
+[e $ ! ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i 862  ]
+[; ;CountMain.c: 84: {
+"84
+{
+[; ;CountMain.c: 85: counter++;
+"85
+[e ++ _counter -> -> 1 `i `ui ]
+[; ;CountMain.c: 86: Lcd_Set_Cursor(1,1);
+"86
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;CountMain.c: 87: utoa(array,counter,10);
+"87
+[e ( _utoa (3 , , &U _array _counter -> 10 `i ]
+[; ;CountMain.c: 88: Lcd_Write_String(array);
+"88
 [e ( _Lcd_Write_String (1 &U _array ]
+[; ;CountMain.c: 89: _delay((unsigned long)((300)*(16000000/4000.0)));
+"89
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;CountMain.c: 90: goto LOOP;
+"90
+[e $U 858  ]
 "91
 }
-[e :U 858 ]
-"75
-[e $U 859  ]
-[e :U 860 ]
+[e :U 862 ]
+"99
+}
+[e :U 859 ]
+"80
+[e $U 860  ]
+[e :U 861 ]
 [; ;CountMain.c: 91: }
-[; ;CountMain.c: 92: return (0);
-"92
+[; ;CountMain.c: 99: }
+[; ;CountMain.c: 100: return (0);
+"100
 [e ) -> 0 `i ]
 [e $UE 857  ]
-[; ;CountMain.c: 93: }
-"93
+[; ;CountMain.c: 101: }
+"101
 [e :UE 857 ]
 }
+[a 1C 48 0 ]
+

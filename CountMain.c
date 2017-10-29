@@ -9,7 +9,7 @@
  http://www.eng.utah.edu/~cs5780/debouncing.pdf
  */
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 16000000
 
 #define D0 PORTBbits.RB0
 #define D1 PORTBbits.RB1
@@ -23,9 +23,12 @@
 #define RS PORTCbits.RC0
 #define EN PORTCbits.RC1
 
+#define SWITCH PORTAbits.RA4
+
 #pragma config FOSC=INTIO67
 #pragma config WDTEN=OFF
 #pragma config PWRTEN=ON
+#pragma config LVP = OFF
 
 #include <xc.h>			
 #include <stdlib.h>
@@ -33,56 +36,59 @@
 #include <string.h>
 #include "LCD.h"
 #include <p18f26k22.h>
-//#include <pic.h>
+
 
 
 //@TODO add counters set to 0
-unsigned int counter = 0;
-unsigned int x;
-//array to store int to then write to lcd
-char array[100];
-
+unsigned int counter, x;
+char array[25];
 //@TODO Make Interrupt Function
+
 void interrupt Timer0_ISR(void)
 {
-    
-    if (T0IE && T0IF)
-    {
-        //Possibly needed to clear the lcd everytime it is pushed before rewriting
-        //Lcd_Clear();
-        T0IF = 0;
-        counter++;
+    if (INTCONbits.TMR0IF == 1)
+    {   
+        
     }
+    INTCONbits.TMR0IF = 0;
 }
 
 int main(int argc, char** argv) 
 {
+    counter = 0;
+    //@TODO Set up configs
+    OSCCON = 0x72;
+    ANSELB = 0;//PORTB digital
+    ANSELC = 0;//PORTC digital
+    ANSELA = 0;
+    TRISB = 0xC0;
+    TRISC = 0;
+    TRISAbits.RA4 = 1;
+    T0CON = 0x68;
+    TMR0L = 246;
+    
+    INTCONbits.TMR0IE = 1;//enable timer interrupt
+    INTCONbits.TMR0IF = 0;//clear flag
+    INTCONbits.PEIE = 1;//enable peripheral interrupt
+    INTCONbits.GIE = 1; //global interrupt
+    
+    T0CONbits.TMR0ON = 1; //timer 0 on
+    
     Lcd_Init();
     Lcd_Clear();
-    //@TODO Set up configs
-    ANSELB=0;//PORTB digital
-    ANSELC=0;//PORTC digital
-    ANSELA = 0xFB;//Configure T0CKI/AN2 as a digital I/O
-    TRISA = 1;
-    TRISB= 0;
-    TRISC= 0;
-    //@TODO Fix interrupt configs
-    TMR0 = 0;
-    T0IE = 1;
-    GIE = 1; 
-    //OPTION = 0x28; external clock source
-    
-    while(1)
+    Lcd_Write_String("0");
+    LOOP:while(1)
     {
+        if (!SWITCH)
+        {
+        counter++;
         Lcd_Set_Cursor(1,1);
-        //@TODO send count to array
-        //I Think this is right double check; Assign it to a new variable 
-        counter = x;
-        itoa(x,array,10);
-        //@TODO send array to lcd
+        utoa(array,counter,10);
         Lcd_Write_String(array);
-        //@TODO just chill till interrupt is triggered again
-        //__delay_ms(100);//Lcd Refresh
+        __delay_ms(300);
+        goto LOOP;
+        }
+ 
         
         /*
          * Plan B

@@ -28,7 +28,7 @@ void Lcd_Cmd(char a)
 	RS = 0;       // RS = 0
 	Lcd_Port(a);
 	EN  = 1;      // E = 1
-    __delay_ms(4);
+    __delay_us(400);
     EN  = 0;      // E = 0
 }
 
@@ -78,11 +78,11 @@ void Lcd_Set_Cursor(char a, char b)
 void Lcd_Init()
 {
   Lcd_Port(0x00);
-   __delay_ms(20);
+   __delay_us(20);
   Lcd_Cmd(0x03);
-	__delay_ms(5);
+	__delay_us(5);
   Lcd_Cmd(0x03);
-	__delay_ms(11);
+	__delay_us(11);
   Lcd_Cmd(0x03);
   
   Lcd_Cmd(0x02);
@@ -102,11 +102,11 @@ void Lcd_Write_Char(char a)
    RS = 1;             // RS = 1
    Lcd_Port(y>>4);     //Data transfer
    EN = 1;
-   __delay_us(40);
+   __delay_ms(20);
    EN = 0;
    Lcd_Port(temp);
    EN = 1;
-   __delay_us(40);
+   __delay_ms(20);
    EN = 0;
 }
 

@@ -2,10 +2,11 @@
 # 1 "CountMain.c"
 
 
-# 26
+# 28
 #pragma config FOSC=INTIO67
 #pragma config WDTEN=OFF
 #pragma config PWRTEN=ON
+#pragma config LVP = OFF
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.43\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -8309,7 +8310,7 @@ void Lcd_Cmd(char a)
 PORTCbits.RC0 = 0;
 Lcd_Port(a);
 PORTCbits.RC1 = 1;
-_delay((unsigned long)((4)*(8000000/4000.0)));
+_delay((unsigned long)((400)*(16000000/4000000.0)));
 PORTCbits.RC1 = 0;
 }
 
@@ -8359,11 +8360,11 @@ Lcd_Cmd(y);
 void Lcd_Init()
 {
 Lcd_Port(0x00);
-_delay((unsigned long)((20)*(8000000/4000.0)));
+_delay((unsigned long)((20)*(16000000/4000000.0)));
 Lcd_Cmd(0x03);
-_delay((unsigned long)((5)*(8000000/4000.0)));
+_delay((unsigned long)((5)*(16000000/4000000.0)));
 Lcd_Cmd(0x03);
-_delay((unsigned long)((11)*(8000000/4000.0)));
+_delay((unsigned long)((11)*(16000000/4000000.0)));
 Lcd_Cmd(0x03);
 
 Lcd_Cmd(0x02);
@@ -8383,11 +8384,11 @@ y = a&0xF0;
 PORTCbits.RC0 = 1;
 Lcd_Port(y>>4);
 PORTCbits.RC1 = 1;
-_delay((unsigned long)((40)*(8000000/4000000.0)));
+_delay((unsigned long)((20)*(16000000/4000.0)));
 PORTCbits.RC1 = 0;
 Lcd_Port(temp);
 PORTCbits.RC1 = 1;
-_delay((unsigned long)((40)*(8000000/4000000.0)));
+_delay((unsigned long)((20)*(16000000/4000.0)));
 PORTCbits.RC1 = 0;
 }
 
@@ -8398,54 +8399,57 @@ for(i=0;a[i]!='\0';i++)
 Lcd_Write_Char(a[i]);
 }
 
-# 40 "CountMain.c"
-unsigned int counter = 0;
-unsigned int x;
+# 43 "CountMain.c"
+unsigned int counter;
 
-char array[100];
 
 
 void interrupt Timer0_ISR(void)
 {
-
-if (T0IE && T0IF)
+if (INTCONbits.TMR0IF == 1)
 {
-
-
-T0IF = 0;
 counter++;
+INTCONbits.TMR0IF = 0;
 }
 }
 
 int main(int argc, char** argv)
 {
+counter = 0;
+
+OSCCON = 0x72;
+ANSELB = 0;
+ANSELC = 0;
+ANSELA = 0;
+TRISB = 0xC0;
+TRISC = 0;
+TRISAbits.RA4 = 1;
+T0CON = 0x68;
+TMR0L = 246;
+
+INTCONbits.TMR0IE = 1;
+INTCONbits.TMR0IF = 0;
+INTCONbits.PEIE = 1;
+INTCONbits.GIE = 1;
+
+T0CONbits.TMR0ON = 1;
+
 Lcd_Init();
 Lcd_Clear();
-
-ANSELB=0;
-ANSELC=0;
-ANSELA = 0xFB;
-TRISA = 1;
-TRISB= 0;
-TRISC= 0;
-
-TMR0 = 0;
-
-
-T0IE = 1;
-GIE = 1;
-
-while(1)
+LOOP:while(1)
 {
-Lcd_Set_Cursor(1,1);
+
+char array[25];
+Set_Cursor(1,1);
 
 
-counter = x;
-itoa(x,array,10);
+utoa(array,counter,10);
 
 Lcd_Write_String(array);
 
-# 93
+_delay((unsigned long)((1000)*(16000000/4000.0)));
+
+# 99
 }
 return (0);
 }
