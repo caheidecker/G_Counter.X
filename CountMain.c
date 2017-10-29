@@ -48,7 +48,7 @@ void interrupt Timer0_ISR(void)
 {
     if (INTCONbits.TMR0IF == 1)
     {   
-        
+        //counter++;
     }
     INTCONbits.TMR0IF = 0;
 }
