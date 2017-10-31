@@ -60,10 +60,10 @@ int main(int argc, char** argv)
     OSCCON = 0x72;
     ANSELB = 0;//PORTB digital
     ANSELC = 0;//PORTC digital
-    ANSELA = 0;
+    ANSELA = 0;//PORTA digital
     TRISB = 0xC0;
     TRISC = 0;
-    TRISAbits.RA4 = 1;
+    TRISAbits.RA4 = 1; //RA4 as input
     T0CON = 0x68;
     TMR0L = 246;
     
@@ -81,20 +81,14 @@ int main(int argc, char** argv)
     {
         if (!SWITCH)
         {
+        TMR0L = counter;
         counter++;
         Lcd_Set_Cursor(1,1);
         utoa(array,counter,10);
         Lcd_Write_String(array);
-        __delay_ms(300);
+        __delay_ms(250);
         goto LOOP;
         }
- 
-        
-        /*
-         * Plan B
-         * Convert the into to ASCII by counter + 48 = newVal
-         * then just send newVal directly to lcd as it will read the correct value
-         */
     }
     return (EXIT_SUCCESS);
 }
