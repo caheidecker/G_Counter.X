@@ -77,7 +77,7 @@ int main(int argc, char** argv)
     Lcd_Init();
     Lcd_Clear();
     Lcd_Write_String("0");
-    LOOP:while(1)
+    while(1)
     {
         if (!SWITCH)
         {
@@ -87,7 +87,7 @@ int main(int argc, char** argv)
         utoa(array,counter,10);
         Lcd_Write_String(array);
         __delay_ms(250);
-        goto LOOP;
+        break;
         }
     }
     return (EXIT_SUCCESS);
